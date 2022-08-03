@@ -10,7 +10,7 @@ header {
     padding-bottom: 10px;
 }
 
- table, table td, tr {
+ table, table tr {
     border:3px solid rgb(92, 87, 87);
     border-collapse: collapse;
 }
