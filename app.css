@@ -10,13 +10,18 @@ header {
     padding-bottom: 10px;
 }
 
- table td {
+ table, table td, tr {
     border:3px solid rgb(92, 87, 87);
-    border-bottom: none;
+    border-collapse: collapse;
 }
-table:last-child {
-    border-bottom: 3px solid rgb(92, 87, 87);
-}
+
+
+p {
+    width: 500px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
 h2 {
     margin: 0;
@@ -31,6 +36,7 @@ h2 {
 }
 
 .pages {
+    text-align: center;
     padding-top: 40px;
     margin-left:auto;
     margin-right:auto;
@@ -39,8 +45,27 @@ h2 {
     flex-direction: row;
 }
 
+.page {
+    font-size: 20px;
+    font-weight: bold;
+    width: 32px;
+    height: 40px;
+    padding-top: 20px;
+    margin: 5px;
+    border: 1px solid;
+    border-radius: 8px;
+}
+
+.page:hover {
+    background-color: rgb(114, 108, 108);
+}
+
+.page:active {
+    background-color: rgb(114, 108, 108);
+}
 
 .submit {
+margin: 5px;
 font-size: 12px;
 color: white;
 background-color: #C04131;
