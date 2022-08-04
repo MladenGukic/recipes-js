@@ -1,7 +1,8 @@
-// const recipeTitle = document.getElementById("title");
-// const recipeDesc = document.getElementById("desc");
-let recipe = document.getElementById("recipe");
-
+const removeBtn = document.getElementById("delete");
+const table = document.getElementById("recipe");
+const addBtn = document.getElementById("add");
+const inputTitle = document.getElementById("recipe-title");
+const inputDesc = document.getElementById("recipe-desc");
 const recipes = [
   {
     title: "Apple cake",
@@ -31,16 +32,37 @@ const recipes = [
 ];
 
 const render = () => {
-  // recipes.forEach((element) => {
-  //   recipe.innerHTML = `<h2>${element.title} </h2>
-  //   <button class="submit">Delete</button>
-  //  <p>${element.description}</p>`;
-  // });
-  recipes.map(({ title, description }) => {
-    recipe.innerHTML += `<tr><td><h2>${title} </h2>
-    <button class="submit">Delete</button>
-    <p>${description}</p><td/></tr>`;
+  let newRecipes = [];
+  recipes.forEach(({ title, description }, index) => {
+    newRecipes.push(`<tr><td><h2>${title} </h2>
+    <button class="submit" onClick="removeElement(${index})">Delete</button>
+    <p>${description}</p><td/></tr>`);
   });
+  table.innerHTML = newRecipes.join("");
+  inputTitle.value = "";
+  inputDesc.value = "";
+};
+
+const removeLastOne = () => {
+  recipes.pop();
+  render();
+};
+
+const removeElement = (indexCake) => {
+  recipes.splice(indexCake, 1);
+  // recipes.pop();
+  render();
+};
+
+const addNewRecipe = () => {
+  recipes.push({
+    title: `${inputTitle.value}`,
+    description: `${inputDesc.value}`,
+  });
+  render();
 };
 
 render();
+
+removeBtn.addEventListener("click", removeLastOne);
+addBtn.addEventListener("click", addNewRecipe);
