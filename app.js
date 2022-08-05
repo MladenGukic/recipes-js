@@ -3,6 +3,7 @@ const table = document.getElementById("recipe");
 const addBtn = document.getElementById("add");
 const inputTitle = document.getElementById("recipe-title");
 const inputDesc = document.getElementById("recipe-desc");
+const inputValue = document.getElementById("filter");
 const recipes = [
   {
     title: "Apple cake",
@@ -31,9 +32,9 @@ const recipes = [
   },
 ];
 
-const render = () => {
+const render = (value = recipes) => {
   let newRecipes = [];
-  recipes.forEach(({ title, description }, index) => {
+  value.forEach(({ title, description }, index) => {
     newRecipes.push(`<tr><td><h2>${title} </h2>
     <button class="submit" onClick="removeElement(${index})">Delete</button>
     <p>${description}</p><td/></tr>`);
@@ -62,7 +63,18 @@ const addNewRecipe = () => {
   render();
 };
 
+const searchRecipes = () => {
+  console.log("mladen");
+  let newRecipes = recipes.filter((el) => {
+    console.log(el.title);
+    console.log(inputTitle.value);
+    return el.title.includes(inputTitle.value);
+  });
+  console.log(newRecipes);
+  render(newRecipes);
+};
 render();
 
 removeBtn.addEventListener("click", removeLastOne);
 addBtn.addEventListener("click", addNewRecipe);
+inputValue.addEventListener("input", searchRecipes);
