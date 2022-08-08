@@ -86,6 +86,7 @@ const recipes = [
       "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.",
   },
 ];
+let paginatedRecipes = [];
 
 const render = (value = recipes) => {
   let newRecipes = [];
@@ -100,12 +101,12 @@ const render = (value = recipes) => {
 };
 
 const removeLastOne = () => {
-  recipes.pop();
+  paginatedRecipes.pop();
   render();
 };
 
 const removeElement = (indexCake) => {
-  recipes.splice(indexCake, 1);
+  paginatedRecipes.splice(indexCake, 1);
   // recipes.pop();
   render();
 };
@@ -119,13 +120,12 @@ const addNewRecipe = () => {
 };
 
 const searchRecipes = (event) => {
-  console.log("mladen");
   let newRecipes = recipes.filter((recipe) => {
     console.log(recipe.title, "====", event.target.value);
     return recipe.title.toLowerCase().includes(event.target.value);
   });
   console.log(newRecipes);
-  render(newRecipes);
+  render();
 };
 
 const numberOfPages = () => {
@@ -134,10 +134,9 @@ const numberOfPages = () => {
     pages.innerHTML += `<div id="page" class="page" onClick="paginate(${i})">${i}</div>`;
   }
 };
-let paginatedRecipes = [];
 const paginate = (pageNumber = 1) => {
   paginatedRecipes = recipes.slice((pageNumber - 1) * 5, pageNumber * 5);
-  render(paginatedRecipes);
+  render();
 };
 numberOfPages();
 paginate();
