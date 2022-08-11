@@ -87,10 +87,31 @@ const recipes = [
   },
 ];
 let paginatedRecipes = [];
-
-const render = (value = recipes) => {
+let filteredRecipes = [];
+let filterInpValue = "";
+let number;
+let pageNumber = 1;
+const render = () => {
   let newRecipes = [];
-  value.forEach(({ title, description }, index) => {
+  filteredRecipes = recipes.filter((recipe) => {
+    return recipe.title.toLowerCase().includes(filterInpValue.toLowerCase());
+  });
+
+  number =
+    filteredRecipes.length < 5 ? 1 : Math.ceil(filteredRecipes.length / 5);
+  pages.innerHTML = null;
+  for (i = 1; i <= number; i++) {
+    pages.innerHTML += `<div id="page" class="page" onClick="selectedPage(${i})">${i}</div>`;
+  }
+
+  paginatedRecipes = filteredRecipes.slice(
+    (pageNumber - 1) * 5,
+    pageNumber * 5
+  );
+
+  // paginate();
+
+  paginatedRecipes.forEach(({ title, description }, index) => {
     newRecipes.push(`<tr><td><h2>${title} </h2>
     <button class="submit" onClick="removeElement(${index})">Delete</button>
     <p>${description}</p><td/></tr>`);
@@ -101,13 +122,12 @@ const render = (value = recipes) => {
 };
 
 const removeLastOne = () => {
-  paginatedRecipes.pop();
+  recipes.pop();
   render();
 };
 
 const removeElement = (indexCake) => {
-  paginatedRecipes.splice(indexCake, 1);
-  // recipes.pop();
+  recipes.splice(indexCake, 1);
   render();
 };
 
@@ -120,27 +140,30 @@ const addNewRecipe = () => {
 };
 
 const searchRecipes = (event) => {
-  let newRecipes = recipes.filter((recipe) => {
-    console.log(recipe.title, "====", event.target.value);
-    return recipe.title.toLowerCase().includes(event.target.value);
-  });
-  console.log(newRecipes);
+  filterInpValue = event.target.value;
   render();
 };
 
-const numberOfPages = () => {
-  let number = recipes.length < 5 ? 1 : Math.ceil(recipes.length / 5);
-  for (i = 1; i <= number; i++) {
-    pages.innerHTML += `<div id="page" class="page" onClick="paginate(${i})">${i}</div>`;
-  }
-};
-const paginate = (pageNumber = 1) => {
-  paginatedRecipes = recipes.slice((pageNumber - 1) * 5, pageNumber * 5);
+// const numberOfPages = () => {
+//   number =
+//     filteredRecipes.length < 5 ? 1 : Math.ceil(filteredRecipes.length / 5);
+//   pages.innerHTML = null;
+//   for (i = 1; i <= number; i++) {
+//     pages.innerHTML += `<div id="page" class="page" onClick="selectedPage(${i})">${i}</div>`;
+//   }
+// };
+
+const selectedPage = (pageNum) => {
+  pageNumber = pageNum;
   render();
 };
-numberOfPages();
-paginate();
-render(paginatedRecipes);
+// const paginate = () => {
+//   paginatedRecipes = filteredRecipes.slice(
+//     (pageNumber - 1) * 5,
+//     pageNumber * 5
+//   );
+// };
+render();
 
 removeBtn.addEventListener("click", removeLastOne);
 addBtn.addEventListener("click", addNewRecipe);
