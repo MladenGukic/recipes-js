@@ -5,6 +5,7 @@ const inputTitle = document.getElementById("recipe-title");
 const inputDesc = document.getElementById("recipe-desc");
 const inputValue = document.getElementById("filter");
 const pages = document.getElementById("pages");
+const editDiv = document.getElementById("edit");
 const editTitleInp = document.getElementById("edit-title");
 const editDescInp = document.getElementById("edit-desc");
 const cancelBtn = document.getElementById("cancel");
@@ -110,6 +111,7 @@ let filterInpValue = "";
 let number;
 let elId;
 let pageNumber = 1;
+let isPressed = false;
 const render = () => {
   let newRecipes = [];
   filteredRecipes = recipes.filter((recipe) => {
@@ -170,6 +172,8 @@ const selectedPage = (pageNum) => {
 };
 
 const getElement = (elementId) => {
+  isPressed = true;
+  isPressed ? (editDiv.className = "edit") : (editDiv.className = "editNone");
   recipes.forEach((element) => {
     if (element.id === elementId) {
       elId = elementId;

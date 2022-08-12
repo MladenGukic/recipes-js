@@ -1,124 +1,142 @@
 .wrapper {
-    width:500px;
-    margin-left:auto;
-    margin-right:auto;
-    display:flex;
-    justify-content:center;
-    flex-direction: column;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
+
 header {
-    padding-bottom: 10px;
+  padding-bottom: 10px;
 }
 
- table, table tr {
-    border:3px solid rgb(92, 87, 87);
-    border-collapse: collapse;
+.edit {
+  width: 494px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid rgb(92, 87, 87);
 }
 
+.editNone {
+  display: none;
+}
+
+table,
+table tr {
+  border: 3px solid rgb(92, 87, 87);
+  border-collapse: collapse;
+}
 
 p {
-    width: 500px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  width: 500px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 h2 {
-    margin: 0;
-    display: inline-block;
+  margin: 0;
+  display: inline-block;
 }
 .filter {
-    font-size: medium;
-    font-style: italic;
-    width: 160px;
-    height: 40px;
-    padding-left: 10px;
+  font-size: medium;
+  font-style: italic;
+  width: 160px;
+  height: 40px;
+  padding-left: 10px;
 }
 
 .pages {
-    text-align: center;
-    padding-top: 40px;
-    margin-left:auto;
-    margin-right:auto;
-     display:flex;
-    justify-content:center;
-    flex-direction: row;
+  text-align: center;
+  padding-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .page {
-    font-size: 20px;
-    font-weight: bold;
-    width: 32px;
-    height: 40px;
-    padding-top: 20px;
-    margin: 5px;
-    border: 1px solid;
-    border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+  width: 32px;
+  height: 40px;
+  padding-top: 20px;
+  margin: 5px;
+  border: 1px solid;
+  border-radius: 8px;
 }
 
 .page:hover {
-    background-color: rgb(114, 108, 108);
+  background-color: rgb(114, 108, 108);
 }
 
 .page:active {
-    background-color: rgb(114, 108, 108);
+  background-color: rgb(114, 108, 108);
 }
 
-.submit, .delete {
-margin: 5px;
-font-size: 12px;
-color: white;
-background-color: #C04131;
-font-weight: bold;
-box-shadow: 0 1px 0 #C04131 ;
-border: 1px solid;
-outline: none;
-border-radius: 2px;
-border-color: #DD4B39;
-padding-top: 5px;
-padding-bottom: 5px;
-padding-right: 10px;
-padding-left: 10px;
-float: right;
+.submit,
+.delete,
+.cancel {
+  margin: 5px;
+  font-size: 12px;
+  color: white;
+  background-color: #c04131;
+  font-weight: bold;
+  box-shadow: 0 1px 0 #c04131;
+  border: 1px solid;
+  outline: none;
+  border-radius: 2px;
+  border-color: #dd4b39;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  float: right;
 }
 
 .submit:hover {
-    border-color: #AF301F;
+  border-color: #af301f;
 }
 
 .submit:active {
-    box-shadow:  inset 0 1px 1px rgba(0,0,0,0.2);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
-.add {
-margin: 5px;
-height: 40px;
-font-size: 12px;
-color: white;
-background-color: #24a0ed;
-font-weight: bold;
-border: 1px solid;
-border-radius: 2px;
+.add,
+.save {
+  margin: 5px;
+  height: 40px;
+  font-size: 12px;
+  color: white;
+  background-color: #24a0ed;
+  font-weight: bold;
+  border: 1px solid;
+  border-radius: 2px;
 }
 
 .add:hover {
-    background-color: #3b43d6;
+  background-color: #3b43d6;
 }
 
-.recipe-title {
-    margin-top: 10px;
-    height: 40px;
-    font-size: medium;
-    font-style: italic;
+.recipe-title,
+.edit-title {
+  margin-top: 10px;
+  height: 40px;
+  font-size: medium;
+  font-style: italic;
 }
 
-.recipe-desc {
-    margin-top: 5px;
-    height: 100px;
+.recipe-desc,
+.edit-desc {
+  margin-top: 5px;
+  height: 100px;
 }
 
 .recipe-desc::placeholder {
-    padding-top: 0px;
+  padding-top: 0px;
 }
-
-

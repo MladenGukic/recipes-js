@@ -14,36 +14,25 @@
         <input type="search" id="filter" class="filter" placeholder="filter" />
         <button class="delete" id="delete">Remove Last One</button>
       </header>
-      <div id="pages" class="pages">
-        <!-- <div class="page">1</div> -->
-        <!-- <div id="page" class="page">2</div> -->
-        <!-- <div class="page">3</div>
-        <div class="page">4</div>
-        <div class="page">5</div> -->
-      </div>
       <table id="recipe" cellspacing="0">
-        <!-- <tr>
-          <td >
-            <h2 id="title">Recipe Title</h2>
-            <button class="submit">Delete</button>
-            <p id="desc">Recipe description(one line, truncated)...</p>
-          </td>
-        </tr> -->
-        <input
-          type="text"
-          class="edit-title"
-          id="edit-title"
-          placeholder="Name"
-        />
-        <input
-          type="text"
-          class="edit-desc"
-          id="edit-desc"
-          placeholder="Description"
-        />
-        <button class="save" id="save">Save</button>
-        <button class="cancel" id="cancel">Cancel</button>
+        <div id="edit" class="editNone">
+          <input
+            type="text"
+            class="edit-title"
+            id="edit-title"
+            placeholder="Name"
+          />
+          <input
+            type="text"
+            class="edit-desc"
+            id="edit-desc"
+            placeholder="Description"
+          />
+          <button class="save" id="save">Save</button>
+          <button class="cancel" id="cancel">Cancel</button>
+        </div>
       </table>
+      <div id="pages" class="pages"></div>
       <input
         type="text"
         class="recipe-title"
