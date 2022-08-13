@@ -5,7 +5,7 @@ const inputTitle = document.getElementById("recipe-title");
 const inputDesc = document.getElementById("recipe-desc");
 const inputValue = document.getElementById("filter");
 const pages = document.getElementById("pages");
-const editDiv = document.getElementById("edit");
+// const editDiv = document.getElementById("edit");
 const editTitleInp = document.getElementById("edit-title");
 const editDescInp = document.getElementById("edit-desc");
 const cancelBtn = document.getElementById("cancel");
@@ -136,7 +136,23 @@ const render = () => {
     newRecipes.push(`<tr><td><h2>${title} </h2>
     <button class="submit" onClick="removeElement(${index})">Delete</button>
     <button class="submit" id="edit" onClick="getElement(${id})">Edit</button>
-    <p>${description}</p><td/></tr>`);
+    <p>${description}</p><td/>
+    <div id="edit" class="${isPressed ? "edit" : "editNone"}">
+          <input
+            type="text"
+            class="edit-title"
+            id="edit-title"
+            placeholder="Name"
+          />
+          <input
+            type="text"
+            class="edit-desc"
+            id="edit-desc"
+            placeholder="Description"
+          />
+          <button class="save" id="save">Save</button>
+          <button class="cancel" id="cancel">Cancel</button>
+        </div></tr>`);
   });
   table.innerHTML = newRecipes.join("");
   inputTitle.value = "";
@@ -173,7 +189,7 @@ const selectedPage = (pageNum) => {
 
 const getElement = (elementId) => {
   isPressed = true;
-  isPressed ? (editDiv.className = "edit") : (editDiv.className = "editNone");
+  // isPressed ? (editDiv.className = "edit") : (editDiv.className = "editNone");
   recipes.forEach((element) => {
     if (element.id === elementId) {
       elId = elementId;
