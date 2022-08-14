@@ -140,3 +140,9 @@ h2 {
 .recipe-desc::placeholder {
   padding-top: 0px;
 }
+
+.validation-message {
+  color: #d63301;
+  background-color: #ffccba;
+  font-size:larger;
+}

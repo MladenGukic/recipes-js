@@ -10,6 +10,7 @@ const editTitleInp = document.getElementById("edit-title");
 const editDescInp = document.getElementById("edit-desc");
 const cancelBtn = document.getElementById("cancel");
 const saveBtn = document.getElementById("save");
+const validationMessage = document.getElementById("validation-message");
 const recipes = [
   {
     id: 1,
@@ -112,6 +113,7 @@ let number;
 let elId;
 let pageNumber = 1;
 let isPressed = false;
+let message = "";
 const render = () => {
   let newRecipes = [];
   filteredRecipes = recipes.filter((recipe) => {
@@ -153,12 +155,32 @@ const removeElement = (indexCake) => {
   render();
 };
 
+const validate = () => {
+  if (inputTitle.value === "" || inputDesc.value === "") {
+    message = "Everything must be filled out";
+    return false;
+  } else if (
+    recipes.some((element) => {
+      return element.title === inputTitle.value;
+    })
+  ) {
+    message = "The recipe already exists";
+    return false;
+  }
+  return true;
+};
+
 const addNewRecipe = () => {
-  recipes.push({
-    title: `${inputTitle.value}`,
-    description: `${inputDesc.value}`,
-  });
-  render();
+  if (validate()) {
+    recipes.push({
+      title: `${inputTitle.value}`,
+      description: `${inputDesc.value}`,
+    });
+    render();
+  } else {
+    validationMessage.className = "validation-message";
+    validationMessage.textContent += message;
+  }
 };
 
 const searchRecipes = (event) => {
