@@ -21,7 +21,7 @@ header {
   border: 3px solid rgb(92, 87, 87);
 }
 
-.editNone {
+.display-none {
   display: none;
 }
 
@@ -144,5 +144,5 @@ h2 {
 .validation-message {
   color: #d63301;
   background-color: #ffccba;
-  font-size:larger;
+  font-size: larger;
 }

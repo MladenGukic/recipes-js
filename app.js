@@ -5,9 +5,6 @@ const inputTitle = document.getElementById("recipe-title");
 const inputDesc = document.getElementById("recipe-desc");
 const inputValue = document.getElementById("filter");
 const pages = document.getElementById("pages");
-const editDiv = document.getElementById("edit");
-const editTitleInp = document.getElementById("edit-title");
-const editDescInp = document.getElementById("edit-desc");
 const cancelBtn = document.getElementById("cancel");
 const saveBtn = document.getElementById("save");
 const validationMessage = document.getElementById("validation-message");
@@ -162,7 +159,8 @@ const validate = () => {
   } else if (
     recipes.some((element) => {
       return element.title === inputTitle.value;
-    })
+    }) &&
+    !isPressed
   ) {
     message = "The recipe already exists";
     return false;
@@ -195,27 +193,35 @@ const selectedPage = (pageNum) => {
 
 const getElement = (elementId) => {
   isPressed = true;
-  isPressed ? (editDiv.className = "edit") : (editDiv.className = "editNone");
+  addBtn.className = "display-none";
+  saveBtn.className = "save";
+  cancelBtn.className = "cancel";
   recipes.forEach((element) => {
     if (element.id === elementId) {
       elId = elementId;
-      editTitleInp.value = element.title;
-      editDescInp.value = element.description;
+      inputTitle.value = element.title;
+      inputDesc.value = element.description;
     }
   });
 };
 
 const editElement = () => {
-  let index = recipes.findIndex((element) => element.id === elId);
-  recipes[index].title = editTitleInp.value;
-  recipes[index].description = editDescInp.value;
-  render();
+  if (validate()) {
+    let index = recipes.findIndex((element) => element.id === elId);
+    recipes[index].title = inputTitle.value;
+    recipes[index].description = inputDesc.value;
+    cancelInput();
+    render();
+  }
 };
 
 const cancelInput = () => {
-  editDiv.className = "editNone";
-  editTitleInp.value = "";
-  editDescInp.value = "";
+  isPressed = false;
+  inputTitle.value = "";
+  inputDesc.value = "";
+  saveBtn.className = "display-none";
+  cancelBtn.className = "display-none";
+  addBtn.className = "add";
 };
 
 // const numberOfPages = () => {
@@ -236,7 +242,7 @@ const cancelInput = () => {
 render();
 
 removeBtn.addEventListener("click", removeLastOne);
-addBtn.addEventListener("click", addNewRecipe);
 inputValue.addEventListener("input", searchRecipes);
 cancelBtn.addEventListener("click", cancelInput);
+addBtn.addEventListener("click", addNewRecipe);
 saveBtn.addEventListener("click", editElement);
