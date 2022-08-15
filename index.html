@@ -9,29 +9,38 @@
   </head>
   <body>
     <div class="wrapper">
-      <header>
-        <h1>Recipes Owerview</h1>
-        <input type="search" id="filter" class="filter" placeholder="filter" />
-        <button class="delete" id="delete">Remove Last One</button>
-      </header>
-      <table id="recipe" cellspacing="0"></table>
-      <div id="pages" class="pages"></div>
-      <input
-        type="text"
-        class="recipe-title"
-        id="recipe-title"
-        placeholder="Name"
-      />
-      <input
-        type="text"
-        class="recipe-desc"
-        id="recipe-desc"
-        placeholder="Description"
-      />
-      <p id="validation-message" class=""></p>
-      <button class="add" id="add">Add One</button>
-      <button class="display-none" id="save">Save</button>
-      <button class="display-none" id="cancel">Cancel</button>
+      <div class="wrapper-child">
+        <header>
+          <h1>Recipes Owerview</h1>
+          <input
+            type="search"
+            id="filter"
+            class="filter"
+            placeholder="filter"
+          />
+          <button class="delete-last-one" id="delete">Remove Last One</button>
+        </header>
+        <table id="recipe" cellspacing="0"></table>
+        <div id="pages" class="pages"></div>
+      </div>
+      <div class="wrapper-child">
+        <input
+          type="text"
+          class="recipe-title"
+          id="recipe-title"
+          placeholder="Name"
+        />
+        <input
+          type="text"
+          class="recipe-desc"
+          id="recipe-desc"
+          placeholder="Description"
+        />
+        <p id="validation-message" class=""></p>
+        <button class="add" id="add">Add One</button>
+        <button class="display-none" id="save">Save</button>
+        <button class="display-none" id="cancel">Cancel</button>
+      </div>
     </div>
     <script src="app.js"></script>
   </body>

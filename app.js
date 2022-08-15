@@ -131,9 +131,9 @@ const render = () => {
 
   // paginate();
 
-  paginatedRecipes.forEach(({ id, title, description }, index) => {
+  paginatedRecipes.forEach(({ id, title, description }) => {
     newRecipes.push(`<tr><td><h2>${title} </h2>
-    <button class="submit" onClick="removeElement(${index})">Delete</button>
+    <button class="submit" onClick="removeElement(${id})">Delete</button>
     <button class="submit" id="edit" onClick="getElement(${id})">Edit</button>
     <p>${description}</p><td/></tr>`);
   });
@@ -147,7 +147,8 @@ const removeLastOne = () => {
   render();
 };
 
-const removeElement = (indexCake) => {
+const removeElement = (id) => {
+  let indexCake = recipes.findIndex((element) => element.id === id);
   recipes.splice(indexCake, 1);
   render();
 };
